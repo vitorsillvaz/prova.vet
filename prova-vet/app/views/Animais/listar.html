@@ -1,0 +1,27 @@
+#{extends 'main.html' /}
+#{set title:'Listagem de Animais' /}
+
+<h1>Listagem de Animais</h1>
+
+${mensagem}
+
+<form action="@{Animais.listar}">
+	<label>Buscar animal:</label>
+	<input type="text" name="nomeBusca" value="${nomeBusca}" />
+	<input type="submit" value="Pesquisar" />
+</form>
+
+<ul>
+	#{list items:animais, as:'animal'}
+	<li>${animal} 
+	    | Tipo:	${animal.tipoAnimal.nome} 
+		| <a href="@{Animais.editar(animal.id)}">Editar</a>
+		| <a href="@{Animais.deletar(animal.id)}">Remover</a>
+	</li>
+	#{/list}
+	#{else}
+	<li>Nenhum animal cadastrado.</li>
+	#{/else}
+</ul>
+
+<a href="@{Animais.form}">Cadastrar Novo Animal</a>

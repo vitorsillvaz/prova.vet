@@ -1,0 +1,14 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+<h2>Login</h2>
+
+<form action="@{Logins.logar}" method="POST">
+    <label>Usuário:</label><br/>
+    <input type="text" name="username"/><br/>
+
+    <label>Senha:</label><br/>
+    <input type="password" name="senha"/><br/><br/>
+
+    <input type="submit" value="Entrar"/>
+</form>

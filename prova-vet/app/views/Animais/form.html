@@ -1,0 +1,33 @@
+#{extends 'main.html' /}
+#{set title:'Cadastro de Animais' /}
+
+<h1>Cadastro de Animais</h1>
+
+<form action="@{Animais.salvar}" method="POST">
+
+	<input type="hidden" name="animal.id" value="${a?.id}" />
+	
+
+	<label>Nome:</label><br />
+	<input type="text" name="animal.nome" value="${a?.nome}" />
+	<span class="error">#{error 'animal.nome' /}</span><br />
+
+	<label>Peso:</label><br />
+	<input type="text" name="animal.peso" value="${a?.peso}" /><span class="error">#{error 'animal.peso' /}</span><br />
+	
+
+	<label>Data de Nascimento:</label><br />
+	<input type="date" name="animal.dataNascimento" value="${a?.dataNascimento}" />
+	<span class="error">#{error 'animal.dataNascimento' /}</span><br />
+	
+	<label>Selecione o tipo:</label>
+	<select name="animal.tipoAnimal.id">
+		#{list items:tipos, as:'t'}
+		<option value="${t.id}">${t.nome}</option>
+		#{/list}
+	</select>
+	<span class="error">#{error 'animal.tipoAnimal' /}</span>
+	<br />
+    
+	<input type="submit" />
+</form>
